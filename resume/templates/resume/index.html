@@ -1,0 +1,306 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="" name="description">
+  <meta content="" name="keywords"> 
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <title>{% block title %}{% endblock title %}</title>
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+ 
+
+  <!-- =======================================================
+  * Template Name: MyResume - v4.9.2
+  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Projects</span></a></li>
+        <li><a href="#testimonials" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Testimonials</span></a></li>
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Andy Henry</h1>
+      <p><span class="typed" data-typed-items="Developer, Freelancer, Problem Solver"></span></p>
+      <div class="social-links">
+        <a href="https://github.com/AndyHenry93" class="github"><i class="bx bxl-github"></i></a>
+        <a href="https://www.linkedin.com/in/andyhenry1993/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="container" data-aos="fade-up">
+      <hr>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <img src= {{about.image.url}} class="rounded-circle" width="350px" height="350px" alt="">
+        </div>
+        <div class="col-lg-8 pt-4 pt-lg-0 content">
+          <h3>{{about.career_title}}</h3>
+          <p>
+            {{about.description}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>
+            Below are a few frameworks, operating systems, and other technology that I am familar with 
+            but also have opportunity to grow and learn more. 
+          </p>
+        </div>
+
+      {% for skills in skill %}
+        <div class="row skills-content">
+          <div class="col-lg-6">
+              <div class="progress">
+                <span class="skill">{{skills.skill_name}} <i class="val">{{skills.percentage}}%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{skills.percentage}}" aria-valuemin="0" aria-valuemax="{{skills.percentage}}"></div>
+                </div>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </section><!-- End Skills Section -->
+
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Resume</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+              <h3 class="resume-title">Education</h3>
+              {% for school in education %}
+              <div class="resume-item">
+                <h4>{{school.title}}</h4>
+                <p><em>{{school.school_name}}</em></p>
+                Completion: <h5>{{school.end_year}}</h5>
+                <p>{{school.description}}</p>
+              </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="resume-title">Professional Experience</h3>
+            {% for job in experience %}
+            <div class="resume-item">
+              <h4>{{job.title}}</h4>
+              <h5>{{job.emp_time}}</h5>
+              <p><em>{{job.location}} </em></p>
+              <p>{{job.description}}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div>
+          <br>
+          <hr>
+          <div>
+              <p>Resume pdf downloadable link</p>
+                <a href="{% static 'files/Backend_resume.docx' %}" download>
+                  <img src="{% static 'img/resume.png'%}" alt="Backend Resume">
+                </a>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Resume Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Projects</h2>
+          <p>
+            Here are some of the projects I have Completed over the past two years.<br>I have a mix of Django applications, API designs using various frameworks, Building Data Pipelines, and working with raw data.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            {% comment %} <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+            </ul> {% endcomment %}
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          {% for project in project %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+             <img src="{{project.project_img.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <a href="{% url 'detail' pk=project.id %}"><h4>{{project.title}}</h4></a>
+              </div>
+            </div>
+          </div>
+         {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+            {% for comment in testimonal %}
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{comment.profile_img.url}}" class="testimonial-img" alt="">
+                <h3>{{comment.name}}</h3>
+                <h4>{{comment.title}}</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  {{comment.recommendation}}
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+        <div class="form-group">
+          <form action="" method="post">
+            {% csrf_token %}
+            {{email_form.as_p}}
+            <div class="text-center">
+              <input type="submit" value="Send Email">
+            </div> 
+          </form>
+        </div>
+        
+{% comment %} 
+        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Send Message</button></div>
+        </form> {% endcomment %}
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>Andy Henry</h3>
+      <div class="social-links">
+        <a href="https://github.com/" class="github"><i class="bx bxl-github"></i></a>
+        <a href="https://www.linkedin.com/?trk=guest_homepage-jobseeker_nav-header-logo" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>MyResume</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: [license-url] -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src=" {% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src=" {% static 'vendor/aos/aos.js' %}"></script>
+  <script src=" {% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src=" {% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src=" {% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src=" {% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src=" {% static 'vendor/typed.js/typed.min.js' %}"></script>
+  <script src=" {% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src=" {% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src=" {% static 'js/main.js' %}"></script>
+</body>
+</html>
