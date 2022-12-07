@@ -39,6 +39,7 @@ class Project(models.Model):
     project_img = models.ImageField(upload_to = 'project/')
     description = models.TextField(blank=False, null=False)
     git_url = models.URLField()
+    project_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return(self.title)

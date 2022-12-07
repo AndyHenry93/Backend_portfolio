@@ -19,10 +19,10 @@ def index(request):
             cd = email_form.cleaned_data
             full_name = cd['full_name'] 
             email = cd['email']
-            subject = cd['subject']
+            subject = "portfolio message: "+cd['full_name']+","+cd['subject']
             message = cd['message']
             try:
-                send_mail(subject,message,email,["Andy.henry1223@gmail.com"])
+                send_mail(subject,message,email,['Andy.henry1223@gmail.com','A.henry250@gmail.com'])
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
             return redirect("success")

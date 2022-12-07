@@ -61,9 +61,10 @@
                     <h3>{{project.title}}</h3>
                     <ul>
                         <li><strong>Github URL</strong>: <a href="{{project.git_url}}">Git Link</a></li>
-                        <li><strong>Home</strong>: <a href="{% url 'index' %}">Home Page</a></li>
-                        
+                        <li><strong>Project URL</strong>: <a href="{{project.project_url}}">Website</a></li>
                     </ul>
+                    <button class="btn btn-outline-primary"><a href="{% url 'index' %}">Home Page</a></button>
+                    <a href=""></a>
                 </div>
                 <div class="portfolio-description">
                     <h2>Project Description</h2>

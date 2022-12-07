@@ -130,4 +130,9 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = str(os.getenv('my_host'))
+EMAIL_HOST_USER = str(os.getenv('user'))
+EMAIL_HOST_PASSWORD = str(os.getenv('password'))
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
