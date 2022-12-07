@@ -17,9 +17,8 @@ def index(request):
         email_form = ContactForm(request.POST)
         if email_form.is_valid():
             cd = email_form.cleaned_data
-            full_name = cd['full_name'] 
             email = cd['email']
-            subject = "portfolio message: "+cd['full_name']+","+cd['subject']
+            subject = "Portfolio message: " + ","+cd['subject']
             message = cd['message']
             try:
                 send_mail(subject,message,email,['Andy.henry1223@gmail.com','A.henry250@gmail.com'])
