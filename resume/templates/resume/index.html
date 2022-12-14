@@ -60,17 +60,13 @@
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
       <h1>Andy Henry</h1>
       <p><span class="typed" data-typed-items="Developer, Freelancer, Problem Solver"></span></p>
-      <div class="social-links">
-        <a href="https://github.com/AndyHenry93" class="github"><i class="bx bxl-github"></i></a>
-        <a href="https://www.linkedin.com/in/andyhenry1993/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
     </div>
     <div class="container" data-aos="fade-up">
       <hr>
 
       <div class="row">
         <div class="col-lg-4">
-          <img src= {{about.image.url}} class="rounded-circle" width="350px" height="350px" alt="">
+          <img style="margin-left:-5%;" src= {{about.image.url}} class="rounded-circle" width="350px" height="350px" alt="">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content">
           <h3>{{about.career_title}}</h3>
@@ -147,7 +143,7 @@
           <br>
           <hr>
           <div>
-              <p>Resume pdf downloadable link</p>
+             <p>Resume pdf downloadable link</p>
                 <a href="{% static 'files/Backend_resume.docx' %}" download>
                   <img src="{% static 'img/resume.png'%}" alt="Backend Resume">
                 </a>
