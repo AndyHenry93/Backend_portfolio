@@ -177,7 +177,7 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
              {% comment %} <img src="{{project.project_img.url}}" class="img-fluid" alt=""> {% endcomment %}
-             <img src="{{project.project_img}}" class="img-fluid" alt="">
+             <img src="{{project.project_img.url}}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <a href="{% url 'detail' pk=project.id %}"><h4>{{project.title}}</h4></a>
               </div>
@@ -202,7 +202,7 @@
             <div class="swiper-slide">
               <div class="testimonial-item">
                 {% comment %} <img src="{{comment.profile_img.url}}" class="testimonial-img" alt=""> {% endcomment %}
-                <img src="{{comment.profile_img}}" class="testimonial-img" alt="">
+                <img src="{{comment.profile_img.url}}" class="testimonial-img" alt="">
                 <h3>{{comment.name}}</h3>
                 <h4>{{comment.title}}</h4>
                 <p>
