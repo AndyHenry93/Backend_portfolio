@@ -28,6 +28,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# ALLOWED_HOSTS = ['127.0.0.1']
 ALLOWED_HOSTS = ['127.0.0.1','web-production-9cda.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://web-production-9cda.up.railway.app']
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'resume.apps.ResumeConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -140,12 +142,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # AWS S3 Settings
-AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = str(os.getenv('DEFAULT_FILE_STORAGE'))
 AWS_ACCESS_KEY_ID = str(os.getenv('AWS_ACCESS_KEY_ID'))
 AWS_SECRET_ACCESS_KEY = str(os.getenv('AWS_SECRET_ACCESS_KEY'))
 AWS_STORAGE_BUCKET_NAME = str(os.getenv('AWS_STORAGE_BUCKET_NAME'))
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+AWS_QUERYSTRING_AUTH = False
+
+DEFAULT_FILE_STORAGE = 'portfolio.storage_backends.MediaStorage'
