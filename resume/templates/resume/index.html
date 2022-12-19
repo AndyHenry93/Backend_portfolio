@@ -57,6 +57,16 @@
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center">
+    {% if messages %}
+      <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="#" class="close">x</a>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
       <h1>Andy Henry</h1>
       <p><span class="typed" data-typed-items="Developer, Freelancer, Problem Solver"></span></p>

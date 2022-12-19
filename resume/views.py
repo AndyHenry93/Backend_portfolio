@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from . models import *
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -22,9 +23,11 @@ def index(request):
             message = cd['message']
             try:
                 send_mail(subject,message,email,['Andy.henry1223@gmail.com','A.henry250@gmail.com'])
+                messages.success(request,'Email Sucessfully Sent, Thank You.')
             except BadHeaderError:
+                messages.error(request,'Email Unsucessfully Sent, please check the form.')
                 return HttpResponse("Invalid header found.")
-            return redirect("success")
+            return redirect("/")
     else:
         email_form = ContactForm()
 
