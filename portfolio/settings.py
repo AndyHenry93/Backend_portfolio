@@ -30,7 +30,8 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1']
 ALLOWED_HOSTS = ['127.0.0.1','www.andyhenry.net']
-CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
+CSRF_TRUSTED_ORIGINS = ['www.andyhenry.net']
+CSRF_COOKIE_DOMAIN = ['www.andyhenry.net']
 CSRF_COOKIE_SECURE = False
 
 
