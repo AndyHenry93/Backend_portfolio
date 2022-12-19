@@ -29,8 +29,9 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 DEBUG = False
 
 # ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = ['127.0.0.1','www.andyhenry.net']
-CSRF_TRUSTED_ORIGINS = ['www.andyhenry.net','www.andyhenry.net/admin']
+ALLOWED_HOSTS = ['127.0.0.1','https://www.andyhenry.net/']
+CSRF_TRUSTED_ORIGINS = ['https://www.andyhenry.net/']
+CSRF_COOKIE_SECURE = False
 
 
 # Application definition
