@@ -28,8 +28,10 @@
       <ul class="messages">
       {% for message in messages %}
         <li class="{{ message.tags }}">
-            {{ message|safe }}
-            <a href="#" class="close">x</a>
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>{{ message|safe }}</strong>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
         </li>
       {% endfor %}
       </ul>
