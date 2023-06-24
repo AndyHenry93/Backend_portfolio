@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'utils/base.html' %}
 {% load static %}
 
 {% block title %}Project Detail{% endblock title %}
@@ -9,10 +9,11 @@
   <!-- ======= Portfolio Details Section ======= -->
   <section id="portfolio-details" class="portfolio-details">
     <div class="container">
-
       <div class="row gy-4">
-
         <div class="col-lg-8">
+          <h2 class="d-flex justify-content-center">Project Details</h2>
+          <hr>
+          <br><br>
           <div class="portfolio-details-slider swiper">
             <div class="swiper-wrapper align-items-center">
               <div>
@@ -28,14 +29,16 @@
                       <li><strong>Github URL</strong>: <a href="{{project.git_url}}">Git Link</a></li>
                       <li><strong>Project URL</strong>: <a href="{{project.project_url}}">Website</a></li>
                   </ul>
-                  <button class="btn btn-outline-primary"><a href="{% url 'index' %}">Home Page</a></button>
-                  <a href=""></a>
-              </div>
-              <div class="portfolio-description">
-                  <h2>Project Description</h2>
-                  <p>
-                     {{project.description}}
-                  </p>
+                  <div class="portfolio-description">
+                      <h2>Project Description</h2>
+                      <p>
+                          {{project.description}}
+                      </p>
+                  </div>
+                  <br>
+                  <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-primary"><a href="{% url 'index' %}">Return Home</a></button>
+                  </div>
               </div>
           </div>
       </div>
