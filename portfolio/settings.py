@@ -144,6 +144,7 @@ EMAIL_HOST_USER = str(os.getenv('user'))
 EMAIL_HOST_PASSWORD = str(os.getenv('password'))
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Custom setting. To email
 RECIPIENT_ADDRESS = str(os.getenv('RECIPIENT_ADDRESS'))
