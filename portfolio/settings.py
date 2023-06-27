@@ -145,6 +145,9 @@ EMAIL_HOST_PASSWORD = str(os.getenv('password'))
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+# Custom setting. To email
+RECIPIENT_ADDRESS = str(os.getenv('RECIPIENT_ADDRESS'))
+
 # AWS S3 Settings
 DEFAULT_FILE_STORAGE = str(os.getenv('DEFAULT_FILE_STORAGE'))
 AWS_ACCESS_KEY_ID = str(os.getenv('AWS_ACCESS_KEY_ID'))

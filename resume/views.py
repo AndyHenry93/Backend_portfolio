@@ -4,6 +4,7 @@ from . models import *
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib import messages
+from django.conf import settings
 
 # Create your views here.
 def index(request):
@@ -22,7 +23,10 @@ def index(request):
             subject = "Portfolio message: " + "  "+cd['subject']
             message = cd['message']
             try:
-                send_mail(subject,message,email,['andy.henry1223@gmail.com'])
+                send_mail(subject=subject,
+                          message=message,
+                          from_email=email,
+                          recipient_list=[settings.RECIPIENT_ADDRESS])
                 messages.success(request,'Email Sucessfully Sent, Thank You.')
             except BadHeaderError:
                 messages.error(request,'Email Unsucessfully Sent, please check the form.')
