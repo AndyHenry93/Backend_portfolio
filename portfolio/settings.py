@@ -30,7 +30,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = ['127.0.0.1','www.andyhenry.net','backendportfolio-production-ab61.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1','www.andyhenry.net','https://backendportfolio-production-ab61.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://www.andyhenry.net','https://backendportfolio-production-ab61.up.railway.app']
 CSRF_COOKIE_SECURE = False
 
