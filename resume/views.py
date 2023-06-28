@@ -20,7 +20,7 @@ def index(request):
         if email_form.is_valid():
             cd = email_form.cleaned_data
             email = cd['email']
-            subject = "Portfolio message: " + "  "+cd['subject']
+            subject = "Portfolio message from:  " + cd["email"]
             message = cd['message']
             try:
                 send_mail(subject=subject,message=message,from_email=email,recipient_list=[settings.RECIPIENT_ADDRESS])
