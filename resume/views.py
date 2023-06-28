@@ -23,10 +23,7 @@ def index(request):
             subject = "Portfolio message: " + "  "+cd['subject']
             message = cd['message']
             try:
-                send_mail(subject=subject,
-                          message=message,
-                          from_email=email,
-                          recipient_list=[settings.RECIPIENT_ADDRESS])
+                send_mail(subject=subject,message=message,from_email=email,recipient_list=[settings.RECIPIENT_ADDRESS])
                 messages.success(request,'Email Sucessfully Sent, Thank You.')
             except BadHeaderError:
                 messages.error(request,'Email Unsucessfully Sent, please check the form.')
