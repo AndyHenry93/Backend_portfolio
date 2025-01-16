@@ -36,7 +36,7 @@ class Experience(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length = 200)
-    project_img = models.ImageField(upload_to = 'project/')
+    project_img = models.ImageField(upload_to = 'project/', null=True, blank=True)
     description = models.TextField(blank=False, null=False)
     git_url = models.URLField()
     project_url = models.URLField(blank=True, null=True)

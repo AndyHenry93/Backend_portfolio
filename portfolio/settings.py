@@ -26,8 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
 DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','www.andyhenry-portfolio.com','backendportfolio-production-ab61.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://www.andyhenry-portfolio.com','https://backendportfolio-production-ab61.up.railway.app']
@@ -128,8 +128,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -138,26 +138,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email Settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = str(os.getenv('my_host'))
-EMAIL_HOST_USER = str(os.getenv('user'))
-EMAIL_HOST_PASSWORD = str(os.getenv('password'))
+EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Custom setting. To email
 RECIPIENT_ADDRESS = str(os.getenv('RECIPIENT_ADDRESS'))
-
-# AWS S3 Settings
-DEFAULT_FILE_STORAGE = str(os.getenv('DEFAULT_FILE_STORAGE'))
-AWS_ACCESS_KEY_ID = str(os.getenv('AWS_ACCESS_KEY_ID'))
-AWS_SECRET_ACCESS_KEY = str(os.getenv('AWS_SECRET_ACCESS_KEY'))
-AWS_STORAGE_BUCKET_NAME = 'portfolio-s3-bucket'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-
-DEFAULT_FILE_STORAGE = 'portfolio.storage_backends.MediaStorage'
