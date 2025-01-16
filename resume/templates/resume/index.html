@@ -1,216 +1,183 @@
-{% extends 'utils/base.html' %}
+{% extends 'utils/new_base.html' %}
 {% load static %}
 
 {% block title %}Homepage{% endblock title %}
 
 {% block content %}
-  <!-- ======= Mobile nav toggle button ======= -->
-  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
-  {% comment %} Header && navbar {% endcomment %}
-  {% include "utils/navbar.html" %}
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    {% if messages %}
-      <ul class="messages">
-      {% for message in messages %}
-        <li class="{{ message.tags }}">
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>{{ message|safe }}</strong>.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-    <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Andy Henry</h1>
-      <p><span class="typed" data-typed-items="Developer, Problem Solver"></span></p>
-    </div>
-    <div class="container" data-aos="fade-up">
-      <hr>
-
-      <div class="row">
-        <div class="col-lg-4">
-          <img style="margin-left:-15%;" src= {{about.image.url}} class="rounded-circle" width="350px" height="350px" alt="">
-        </div>
-        <div class="col-lg-8 pt-4 pt-lg-0 content">
-          <h3>{{about.career_title}}</h3>
-          <div>
+    <header>
+        <h1>Andy Henry</h1>
+        <p>{{about.career_title}} | Problem Solver | Tech Enthusiast</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#recommendations">Recommendations</a>
+            <a href="#experience">Work Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main class="container">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <section id="about" class="section">
+            <h2>About Me</h2>
             <p>
-              {{about.description}}
+                {{about.description|linebreaks}}
             </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-        </div>
-
-      {% for skills in skill %}
-        <div class="row skills-content">
-          <div class="col-lg-6">
-              <div class="progress">
-                <span class="skill">{{skills.skill_name}} <i class="val">{{skills.percentage}}%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="{{skills.percentage}}" aria-valuemin="0" aria-valuemax="{{skills.percentage}}"></div>
+        </section>
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="row">
+                {% for project in project %}
+                    <div class="col-md-4">
+                        <div class="project">
+                            <h3>{{project.title}}</h3>
+                            <p>{{project.description|linebreaks}}</p>
+                            <a href="{{project.git_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Github</a>
+                            <a href="{{project.project_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Website</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr>
+        </section>
+        <section id="skills" class="section">
+            <h2>Skills & Tools</h2>
+            <div class="row">
+                {% for skills in skill %}
+                <div class="col-md-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">{{skills.skill_name}}</li>
+                    </ul>
                 </div>
-              </div>
-          </div>
-        </div>
-      {% endfor %}
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-              <h3 class="resume-title">Education</h3>
-              {% for school in education %}
-              <div class="resume-item">
-                <h4>{{school.title}}</h4>
-                <p><em>{{school.school_name}}</em></p>
-                Completion: <h5>{{school.end_year}}</h5>
-                <p>{{school.description}}</p>
-              </div>
-            {% endfor %}
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <h3 class="resume-title">Professional Experience</h3>
-            {% for job in experience %}
-            <div class="resume-item">
-              <h4>{{job.title}}</h4>
-              <h5>{{job.emp_time}}</h5>
-              <p><em>{{job.location}} </em></p>
-              <p>{{job.description}}</p>
+                {% endfor %}
             </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div>
-          <br>
-          <hr>
-          <div>
-                <a href="{% static 'img/Full-Stack-Resume_V2.png' %}" class="btn btn-outline-primary">View Resume</a>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Projects</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100"></div>
-        </div>
-        
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          {% for project in project %}
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-             {% comment %} <img src="{{project.project_img.url}}" class="img-fluid" alt=""> {% endcomment %}
-             <img src="{{project.project_img.url}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <a href="{% url 'detail' pk=project.id %}"><h4>{{project.title}}</h4></a>
-              </div>
+            <hr>
+        </section>
+        <section id="recommendations" class="section">
+            <h2>Recommendations</h2>
+            <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {% for comment in testimonal|slice:":2" %}
+                            <blockquote class="blockquote">
+                                <p class="mb-0 recommendation-text" data-full-text="{{ comment.recommendation}}">
+                                    {{ comment.recommendation|truncatechars:200 }}
+                                </p>
+                                {% if comment.recommendation|length > 100 %}
+                                <a href="" class="expand-text">Expand</a>
+                                {% endif %}
+                                <footer class="blockquote-footer">
+                                    {{ comment.name }}, 
+                                    <cite title="Company">{{ comment.title }}</cite>
+                                </footer>
+                            </blockquote>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {% for comment in testimonal|slice:"2:" %}
+                            <blockquote class="blockquote">
+                                <p class="mb-0 recommendation-text" data-full-text="{{ comment.recommendation}}">
+                                    {{ comment.recommendation|truncatechars:200 }}
+                                </p>
+                                {% if comment.recommendation|length > 100 %}
+                                <a href="" class="expand-text">Expand</a>
+                                {% endif %}
+                                <footer class="blockquote-footer">
+                                    {{ comment.name }}, 
+                                    <cite title="Company">{{ comment.title }}</cite>
+                                </footer>
+                            </blockquote>
+                        {% endfor %}
+                    </div>
             </div>
-          </div>
-         {% endfor %}
+            <hr>
+        </section>
+        <section id="experience" class="section">
+            <h2>Education and Certifications</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {% for school in education|slice:":1" %}
+                        <h5>{{school.title}}</h5>
+                        <p>{{school.school_name}}</p>
+                        <p>Completion: {{school.end_year}}</p>
+
+                    {% endfor %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {% for school in education|slice:"1:" %}
+                        <h5>{{school.title}}</h5>
+                        <p>{{school.school_name}}</p>
+                        <p>Completion: {{school.end_year}}</p>
+
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+        </section>        
+        <section id="experience" class="section">
+            <h2>Professional Experience</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {% for job in experience|slice:":1" %}
+                        <h5 style="text-decoration: underline;">{{job.title}}</h5>
+                        <p><strong>Company:</strong> {{job.location}}</p>
+                        <p>{{job.emp_time}}</p>
+                        <p><strong>Short Description:</strong> {{job.description|linebreaks}}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {% for job in experience|slice:"1:" %}
+                        <h5 style="text-decoration: underline;">{{job.title}}</h5>
+                        <p><strong>Company:</strong> {{job.location}}</p>
+                        <p>{{job.emp_time}}</p>
+                        <p><strong>Short Description:</strong> {{job.description|linebreaks}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+        </section>
+        <section id="contact" class="section">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Contact</h2>
+                    <p style="font-size: small; margin-left: 20px;">
+                        Please feel free to reach out with any questions or opportunities.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{email_form.as_p}}
+                        <div class="text-center">
+                            <input type="submit" value="Send Email">
+                        </div> 
+                    </form>
+                </div>
+            </div>
+            <button class="btn btn-grey mt-3" onclick="downloadResume()">Download My Resume</button>
+        </section>
+    </main>
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/AndyHenry93" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Github</a>
+            <a href="https://www.linkedin.com/in/andyhenry1993/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">LinkedIn</a>
         </div>
-      </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Testimonials</h2>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-            {% for comment in testimonal %}
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                {% comment %} <img src="{{comment.profile_img.url}}" class="testimonial-img" alt=""> {% endcomment %}
-                <img src="{{comment.profile_img.url}}" class="testimonial-img" alt="">
-                <h3>{{comment.name}}</h3>
-                <h4>{{comment.title}}</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  {{comment.recommendation}}
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-          {% endfor %}
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-        <div class="form-group">
-          <form action="" method="post">
-            {% csrf_token %}
-            {{email_form.as_p}}
-            <div class="text-center">
-              <input type="submit" value="Send Email">
-            </div> 
-          </form>
-        </div>
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <h3>Andy Henry</h3>
-      <div class="social-links">
-        <a href="https://github.com/AndyHenry93" class="github"><i class="bx bxl-github"></i></a>
-        <a href="https://www.linkedin.com/in/andyhenry1993/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>MyResume</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: [license-url] -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+        <p>&copy; 2025 Andy Henry. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function downloadResume() {
+            const link = document.createElement('a');
+            link.href = "{% static 'files/Developer_Resume.pdf' %}";
+            link.download = 'Andy_Henry_Resume.pdf';
+            link.click();
+        }
+    </script>
 {% endblock content %}
