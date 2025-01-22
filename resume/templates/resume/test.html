@@ -42,7 +42,7 @@
                             <h3>{{project.title}}</h3>
                             <p>{{project.description|linebreaks}}</p>
                             <a href="{{project.git_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Github</a>
-                            <a href="{{project.project_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Website</a>
+                            {% comment %} <a href="{{project.project_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Website</a> {% endcomment %}
                         </div>
                     </div>
                 {% endfor %}
