@@ -32,6 +32,7 @@
             <p>
                 {{about.description|linebreaks}}
             </p>
+            <hr>
         </section>
         <section id="projects" class="section">
             <h2>Projects</h2>
@@ -42,8 +43,8 @@
                             <h3>{{project.title}}</h3>
                             <p>{{project.description|linebreaks}}</p>
                             <a href="{{project.git_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Github</a>
-                            <a href="{{project.project_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Website</a>
-                        </div>
+                            {% comment %} <a href="{{project.project_url}}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github profile">Website</a> {% endcomment %}
+                        </div> 
                     </div>
                 {% endfor %}
             </div>
